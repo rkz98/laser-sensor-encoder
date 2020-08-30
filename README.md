@@ -1,1 +1,3 @@
-LaserSensorEncoder
+O Sensor Seguidor de Linha TCRT5000 é um módulo eletrônico que comumente é aplicado em projetos de robótica. Projetos de robô seguidor de linha com plataformas microcontroladas sempre utilizam esse tipo de sensor.
+
+Este sensor tem a capacidade de identificar o caminho a ser seguido a partir de uma linha que pode ser na cor branca (o chão deverá ser preto) ou na cor preta (o chão deverá ser branco). A partir das frequências emitidas pelo sensor, o mesmo seguirá mantendo seu trajeto, que no caso é a linha. A base de funcionamento do Sensor Seguidor de Linha TCRT5000 é um sensor reflexivo TCRT500, que é um sensor infravermelho (emissor e receptor) que funciona a partir da reflexão de sinais.
