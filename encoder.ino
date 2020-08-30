@@ -28,7 +28,7 @@ void startRunning() {
 			lastLaserSensorState = LOW;
 			checkIfCompleteRotation();
 		}
-	} else if (laserSensorState == LOW) {
+	} else if (lastLaserSensorState == LOW) {
 		rotationStep += 1;
 		lastLaserSensorState = HIGH;
 		checkIfCompleteRotation();
