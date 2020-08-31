@@ -1,26 +1,25 @@
 #define COMPLETE_ROTATION 10
 
-uint rotationStep = 0;
-uint completeRotations = 0;
+unsigned int rotationStep = 0;
+unsigned int completeRotations = 0;
 
-const uint pinButton = 12;
-const uint pinLaserSensor = 8;
+const unsigned int pinLaserSensor = 8;
 
 void setup() {
 	Serial.begin(9600);
-	pinMode(pinButton, INPUT);
 	pinMode(pinLaserSensor, INPUT);
 }
 
 void checkIfCompleteRotation() {
 	if (rotationStep == COMPLETE_ROTATION) {
+		rotationStep = 0;
 		completeRotations += 1;
 	}
 }
 
 void startRunning() {
-	uint lastLaserSensorState = 0;
-	uint laserSensorState = digitalRead(pinLaserSensor);
+	unsigned int lastLaserSensorState = 0;
+	unsigned int laserSensorState = digitalRead(pinLaserSensor);
 
 	if (laserSensorState == LOW) {
 		if (laserSensorState == HIGH) {
@@ -35,19 +34,8 @@ void startRunning() {
 	}
 }
 
-void stopRunning() {
-	rotationStep = 0;
-	completeRotations = 0;
-}
-
 void loop() {
-	uint buttonState = digitalRead(pinButton);
-
+	unsigned int buttonState = digitalRead(pinButton);
 	Serial.println(completeRotations);
-
-	if (buttonState == HIGH) {
-		startRunning();
-	} else {
-		stopRunning();
-	}
+	startRunning();
 }
