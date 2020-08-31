@@ -2,6 +2,7 @@
 
 unsigned int rotationStep = 0;
 unsigned int completeRotations = 0;
+unsigned int lastLaserSensorState = 0;
 
 const unsigned int pinLaserSensor = 8;
 
@@ -18,7 +19,6 @@ void checkIfCompleteRotation() {
 }
 
 void startRunning() {
-	unsigned int lastLaserSensorState = 0;
 	unsigned int laserSensorState = digitalRead(pinLaserSensor);
 
 	if (laserSensorState == LOW) {
@@ -35,7 +35,6 @@ void startRunning() {
 }
 
 void loop() {
-	unsigned int buttonState = digitalRead(pinButton);
-	Serial.println(completeRotations);
 	startRunning();
+	Serial.println(completeRotations);
 }
