@@ -6,35 +6,50 @@ unsigned int lastLaserSensorState = 0;
 
 const unsigned int pinLaserSensor = 8;
 
-void setup() {
+void setup()
+{
 	Serial.begin(9600);
 	pinMode(pinLaserSensor, INPUT);
 }
 
-void checkIfCompleteRotation() {
-	if (rotationStep == COMPLETE_ROTATION) {
+void checkIfCompleteRotation()
+{
+	if (rotationStep == COMPLETE_ROTATION)
+	{
 		rotationStep = 0;
 		completeRotations += 1;
 	}
 }
 
-void startRunning() {
+void startRunning()
+{
 	unsigned int laserSensorState = digitalRead(pinLaserSensor);
 
-	if (laserSensorState == LOW) {
-		if (laserSensorState == HIGH) {
+	//Serial.println(laserSensorState);
+	Serial.println(lastLaserSensorState);
+	// Serial.println(rotationStep);
+
+	if (laserSensorState == LOW)
+	{
+		if (laserSensorState == HIGH)
+		{
+			Serial.println("Aqui 1");
 			rotationStep += 1;
-			lastLaserSensorState = LOW;
+			lastLaserSensorState = 0;
 			checkIfCompleteRotation();
 		}
-	} else if (lastLaserSensorState == LOW) {
+	}
+	else if (lastLaserSensorState == 0)
+	{
+		Serial.println("Aqui 2");
 		rotationStep += 1;
-		lastLaserSensorState = HIGH;
+		lastLaserSensorState = 1;
 		checkIfCompleteRotation();
 	}
 }
 
-void loop() {
+void loop()
+{
 	startRunning();
-	Serial.println(completeRotations);
+	// Serial.println(completeRotations);
 }
